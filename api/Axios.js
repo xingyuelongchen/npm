@@ -20,6 +20,7 @@ axios.defaults['timeout'] = Config.axios.timeout || 60 * 10;
 // 设置cross跨域 并设置访问权限 允许跨域携带cookie信息
 axios.defaults['crossDomain'] = true;
 axios.defaults['withCredentials'] = true;
+axios.defaults['method'] = 'post';
 // 当前用户使用语言
 axios.defaults.headers.common['Accept-Language'] = 'zh-cn'
 
