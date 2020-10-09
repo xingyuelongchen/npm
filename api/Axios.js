@@ -4,7 +4,7 @@ import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 
 // 请求进度条
-NProgress.inc(0.2);
+
 NProgress.configure({
     easing: 'ease',
     speed: 500,
@@ -28,7 +28,7 @@ axios.interceptors.request.use(req, reqError);
 axios.interceptors.response.use(res, resError);
 
 function req(config) {
-    NProgress.start();
+    NProgress.inc(0.2);
     return config
 }
 function reqError() {
