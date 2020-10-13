@@ -12,7 +12,7 @@ NProgress.configure({
 });
 // 配置线上默认请求地址
 if (process.env.NODE_ENV != 'development') {
-    axios.defaults['baseURL'] = Config.baseUrl;
+    axios.defaults['baseURL'] = Config.axios.baseUrl;
 };
 
 // 请求超时时间(毫秒)

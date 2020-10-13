@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { validatenull } from './Validate'
-import config from '@/api/Config'
+import config from './Config'
 
 const keyName = config.store.storeKey + '-'
 /**
@@ -130,7 +130,7 @@ export function setCookie(params = {}) {
         else var [name, data = null] = [...arguments];
         name = keyName + name;
         data = JSON.stringify({ content: data })
-        document.cookie = `${name}=${escape(data)}; Max-Age=${Date.now() + config.store.maxage}`
+        document.cookie = `${name}=${escape(data)}; Max-Age=${Date.now() + config.store.maxage}; domain=${config.store.doamin}`
         return true
     } catch (error) {
         return false
@@ -146,7 +146,8 @@ export function getCookie(name) {
     cookie.split('; ').map(e => e.split('=')).forEach(e => {
         cookies[e[0]] = e[1]
     })
-    return cookies[name] ? unescape(cookies[name]) : false
+    cookie = cookies[name] ? unescape(cookies[name]) : false;
+    return JSON.parse(cookie).content
 }
 /**
  * 删除cookie
