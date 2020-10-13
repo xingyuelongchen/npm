@@ -1,5 +1,3 @@
-
-
 /**
  * 时间格式化
  * @param {String} time 可以被 Date 对象解析的任何字符串，默认当前本地时间。
@@ -8,15 +6,17 @@
  * @return 返回 Format 参数指定格式的时间字符串
  */
 export default function formatDate(time = new Date(), format = 'YYYY-MM-DD hh:mm:ss', utc = null) {
- 
+
     try {
         time = new Date(time)
     } catch (error) {
         console.error('Wrong time type：', error);
         time = new Date();
     }
-    if (utc === true) time = new Date(time.getTime() - new Date().getTimezoneOffset() * 60 * 1000);
-    if (utc === false) time = new Date(time.getTime() + new Date().getTimezoneOffset() * 60 * 1000);
+    // utc 0点时间转为本地时间
+    if (utc === false) time = new Date(time.getTime() - new Date().getTimezoneOffset() * 60 * 1000);
+    // utc 本地时间转为0点时间
+    if (utc === true) time = new Date(time.getTime() + new Date().getTimezoneOffset() * 60 * 1000);
     [
         { test: /YYYY/g, text: time.getFullYear() },
         { test: /MM/g, text: time.getMonth() + 1 },
