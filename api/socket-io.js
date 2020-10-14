@@ -4,8 +4,8 @@ import config from '@/config.js';
 export default function () {
     let socketUrl = config.get('websocket');
     const socket = IO(socketUrl);
-    if (window.localStorage.userinfo) {
-        let userinfo = JSON.parse(window.localStorage.userinfo)
+    let userinfo = getCookie('userInfo')
+    if (userinfo) {
         let msg = {
             type: "crm",
             data: null,

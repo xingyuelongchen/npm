@@ -154,6 +154,6 @@ export function getCookie(name) {
  */
 export function removeCookie(name) {
     name = keyName + name;
-    document.cookie = `${name}=null; expires=0`
+    document.cookie = `${name}=; expires=0; domain=${config.store.doamin}`
 }
 export default { removeStore, getAllStore, getStore, clearStore, setStore, setCookie, getCookie, removeCookie }
