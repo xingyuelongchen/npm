@@ -43,7 +43,7 @@ function res(res) {
     return res
 }
 function resError(error) {
-    // 服务器出现错误，请联系管理员
+    // 服务错误，请刷新
     NProgress.done();
     return error
 }

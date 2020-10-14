@@ -130,7 +130,7 @@ export function setCookie(params = {}) {
         else var [name, data = null] = [...arguments];
         name = keyName + name;
         data = JSON.stringify({ content: data })
-        document.cookie = `${name}=${escape(data)}; Max-Age=${Date.now() + config.store.maxage}; domain=${config.store.doamin}`
+        document.cookie = `${name}=${escape(data)}; Max-Age=${config.store.maxage}; domain=${config.store.doamin};path=/`
         return true
     } catch (error) {
         return false
@@ -147,13 +147,17 @@ export function getCookie(name) {
         cookies[e[0]] = e[1]
     })
     cookie = cookies[name] ? unescape(cookies[name]) : false;
-    return JSON.parse(cookie).content
+    if (cookie) { 
+        return JSON.parse(cookie).content
+    } else {
+        return false
+    }
 }
 /**
  * 删除cookie
  */
 export function removeCookie(name) {
-    name = keyName + name;
-    document.cookie = `${name}=; expires=0; domain=${config.store.doamin}`
+    name = keyName + name; 
+    document.cookie = `${name}=0; Max-Age=0; domain=${config.store.doamin};path=/`
 }
 export default { removeStore, getAllStore, getStore, clearStore, setStore, setCookie, getCookie, removeCookie }
