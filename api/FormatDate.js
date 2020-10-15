@@ -5,8 +5,7 @@
  * @param {Boolean} utc  true 从0时区转为本地时间， false 从本地时间转为 0 时区，默认为 null 不做任何转换。
  * @return 返回 Format 参数指定格式的时间字符串
  */
-export default function formatDate(time = new Date(), format = 'YYYY-MM-DD hh:mm:ss', utc = null) {
-
+export const formatDate = function (time = new Date(), format = 'YYYY-MM-DD hh:mm:ss', utc = null) {
     try {
         time = new Date(time)
     } catch (error) {
@@ -30,3 +29,4 @@ export default function formatDate(time = new Date(), format = 'YYYY-MM-DD hh:mm
     });
     return format;
 }
+export default formatDate;

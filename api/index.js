@@ -8,11 +8,11 @@
 // });
 export const Axios = require('./Axios').default;
 export const Storage = require('./Storage').default;
+export const IsAu = require('./IsAu').default;
 export const FormatDate = require('./FormatDate').default;
 export const Config = require('./Config');
 export const Validate = require('./Validate');
-const obj = { Axios, Config, Storage, ...Storage, Validate, FormatDate };
-
+const obj = { Axios, Config, Storage, ...Storage, Validate, IsAu, FormatDate };
 export default {
     ...obj,
     install(VM, options = {}) {
